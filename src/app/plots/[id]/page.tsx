@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Header, Footer } from '@/components/layout'
 import { ContactForm } from '@/components/features'
+import { RealEstateListingJsonLd, BreadcrumbJsonLd } from '@/components/seo'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -51,6 +52,21 @@ export default async function PlotPage({ params }: Props) {
 
   return (
     <>
+      <RealEstateListingJsonLd
+        id={plot.id}
+        name={plot.title}
+        description={plot.description}
+        area={plot.area}
+        price={plot.price}
+        status={plot.status}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Площадки', url: '/plots' },
+          { name: plot.title, url: `/plots/${plot.id}` },
+        ]}
+      />
       <Header />
 
       <main>
