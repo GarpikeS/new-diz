@@ -4,62 +4,35 @@ import { ContactForm } from '@/components/features'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { company, spaceFormats, phases, benefits, targetSegments } from '@/lib/data'
 import {
   ArrowRight,
   Building2,
   Factory,
-  MapPin,
-  Ruler,
-  Train,
-  Truck,
-  Users,
+  HardHat,
+  Warehouse,
   Zap,
+  Wifi,
+  ShieldCheck,
+  Users,
+  Clock,
+  Ruler,
+  CheckCircle,
 } from 'lucide-react'
 
 const stats = [
-  { label: 'Площадь парка', value: '150 га', icon: Ruler },
-  { label: 'Резидентов', value: '45+', icon: Users },
-  { label: 'Рабочих мест', value: '3 500', icon: Factory },
-  { label: 'Инвестиций', value: '12 млрд ₽', icon: Building2 },
+  { label: 'Площадь помещений', value: '57 000 м²', icon: Ruler },
+  { label: 'Резидентов', value: '9', icon: Users },
+  { label: 'Лет работы', value: '14', icon: Clock },
+  { label: 'Мощность', value: '31,5 МВт', icon: Zap },
 ]
 
-const features = [
-  {
-    icon: Zap,
-    title: 'Энергоснабжение',
-    description: 'Выделенная мощность до 10 МВт. Две независимые линии электропитания.',
-  },
-  {
-    icon: Train,
-    title: 'Ж/Д ветка',
-    description: 'Собственный подъездной путь. Прямое подключение к магистрали.',
-  },
-  {
-    icon: Truck,
-    title: 'Логистика',
-    description: '15 км до федеральной трассы. Удобный подъезд для фур любого тоннажа.',
-  },
-  {
-    icon: MapPin,
-    title: 'Расположение',
-    description: '35 км от центра города. Рядом жилые районы для персонала.',
-  },
-]
-
-const residents = [
-  { name: 'АвтоКомпонент', logo: 'АК' },
-  { name: 'ТехноПласт', logo: 'ТП' },
-  { name: 'СтройМеталл', logo: 'СМ' },
-  { name: 'ЛогистикПро', logo: 'ЛП' },
-  { name: 'ЭнергоСистемы', logo: 'ЭС' },
-  { name: 'ПромТехника', logo: 'ПТ' },
-]
-
-const availablePlots = [
-  { id: '1', area: '2 500 м²', type: 'Производство', price: 'от 350 ₽/м²' },
-  { id: '2', area: '5 000 м²', type: 'Склад', price: 'от 280 ₽/м²' },
-  { id: '3', area: '10 000 м²', type: 'Производство', price: 'от 320 ₽/м²' },
-]
+const iconMap: Record<string, typeof Factory> = {
+  Factory,
+  Warehouse,
+  Building2,
+  HardHat,
+}
 
 export default function Home() {
   return (
@@ -67,72 +40,110 @@ export default function Home() {
       <Header />
 
       <main>
-        {/* Hero Section */}
-        <section className="relative bg-primary py-20 text-primary-foreground lg:py-32">
+        {/* Hero Section - асимметричный стиль */}
+        <section className="relative bg-primary text-primary-foreground">
           <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-4xl text-center">
-              <Badge variant="outline" className="mb-6 border-accent text-accent">
-                Открыт набор резидентов
-              </Badge>
-              <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-                Индустриальный парк
-                <span className="block text-accent">Красный Яр</span>
-              </h1>
-              <p className="mx-auto mb-8 max-w-2xl text-lg text-primary-foreground/80 md:text-xl">
-                Современная площадка для размещения производственных и логистических объектов.
-                Готовая инфраструктура, выгодные условия, профессиональное сопровождение.
-              </p>
-              <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                <Button size="lg" variant="secondary" asChild>
-                  <Link href="/plots">
-                    Выбрать площадку
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
-                  asChild
-                >
-                  <Link href="/about">О парке</Link>
-                </Button>
+            {/* Main hero */}
+            <div className="relative flex min-h-[50vh] flex-col justify-between py-10 lg:min-h-[60vh] lg:py-12">
+              {/* Top left - subtitle */}
+              <div className="max-w-md">
+                <p className="text-xl text-primary-foreground/70 md:text-2xl">
+                  Производственная площадка
+                  <br />
+                  с готовой инфраструктурой в Красноярске
+                </p>
+              </div>
+
+              {/* Bottom section */}
+              <div className="mt-12 flex flex-col items-start justify-between gap-8 lg:mt-0 lg:flex-row lg:items-end">
+                {/* Button - bottom left */}
+                <div>
+                  <Button size="lg" className="bg-accent px-8 py-6 text-lg text-accent-foreground hover:bg-accent/90" asChild>
+                    <Link href="/plots">
+                      Выбрать помещение
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Main title - bottom right */}
+                <div className="text-right">
+                  <h1 className="text-5xl font-bold leading-none tracking-tight md:text-7xl lg:text-8xl xl:text-9xl">
+                    Промпарк
+                    <br />
+                    <span className="text-accent">Красный Яр</span>
+                  </h1>
+                </div>
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-8">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-lg border border-primary-foreground/10 bg-primary-foreground/5 p-4 text-center lg:p-6"
-                >
-                  <stat.icon className="mx-auto mb-2 h-6 w-6 text-accent" />
-                  <div className="text-2xl font-bold lg:text-3xl">{stat.value}</div>
-                  <div className="text-sm text-primary-foreground/70">{stat.label}</div>
-                </div>
-              ))}
+            {/* Stats bar */}
+            <div className="border-t border-primary-foreground/10 py-10">
+              <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="text-center">
+                    <div className="mb-1 text-3xl font-bold lg:text-4xl">{stat.value}</div>
+                    <div className="text-sm text-primary-foreground/60">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Space Formats Section */}
         <section className="py-16 lg:py-24">
           <div className="container mx-auto px-4">
             <div className="mx-auto mb-12 max-w-2xl text-center">
-              <h2 className="mb-4">Инфраструктура парка</h2>
+              <h2 className="mb-4">Форматы размещения</h2>
               <p className="text-lg text-muted-foreground">
-                Всё необходимое для запуска производства — подключение коммуникаций за 30 дней
+                Гибкие решения для любого масштаба бизнеса
               </p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {features.map((feature) => (
-                <Card key={feature.title} className="border-2 hover:border-accent/50">
+              {spaceFormats.map((format) => {
+                const Icon = iconMap[format.icon] || Factory
+                return (
+                  <Card key={format.id} className="border-2 transition-colors hover:border-accent/50">
+                    <CardContent className="p-6">
+                      <Icon className="mb-4 h-10 w-10 text-accent" />
+                      <h3 className="mb-2 text-lg font-semibold">{format.title}</h3>
+                      <p className="text-sm text-muted-foreground">{format.description}</p>
+                    </CardContent>
+                  </Card>
+                )
+              })}
+            </div>
+
+            <div className="mt-10 text-center">
+              <Button variant="outline" asChild>
+                <Link href="/plots">
+                  Смотреть помещения
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Benefits Section */}
+        <section className="bg-muted py-16 lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto mb-12 max-w-2xl text-center">
+              <h2 className="mb-4">Преимущества</h2>
+              <p className="text-lg text-muted-foreground">
+                Всё необходимое для успешного бизнеса
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {benefits.map((benefit, index) => (
+                <Card key={index} className="bg-background">
                   <CardContent className="p-6">
-                    <feature.icon className="mb-4 h-10 w-10 text-accent" />
-                    <h3 className="mb-2 text-lg font-semibold">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    <CheckCircle className="mb-4 h-8 w-8 text-accent" />
+                    <h3 className="mb-2 text-lg font-semibold">{benefit.title}</h3>
+                    <p className="text-sm text-muted-foreground">{benefit.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -141,7 +152,7 @@ export default function Home() {
             <div className="mt-10 text-center">
               <Button variant="outline" asChild>
                 <Link href="/infrastructure">
-                  Вся инфраструктура
+                  Подробнее об инфраструктуре
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -149,78 +160,71 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Available Plots Section */}
-        <section className="bg-muted py-16 lg:py-24">
+        {/* Phases Section */}
+        <section className="py-16 lg:py-24">
           <div className="container mx-auto px-4">
             <div className="mx-auto mb-12 max-w-2xl text-center">
-              <Badge variant="secondary" className="mb-4">
-                {availablePlots.length} свободных участка
-              </Badge>
-              <h2 className="mb-4">Доступные площадки</h2>
+              <h2 className="mb-4">Очереди развития</h2>
               <p className="text-lg text-muted-foreground">
-                Участки от 500 до 50 000 м² с готовыми коммуникациями
+                Парк постоянно расширяется
               </p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-3">
-              {availablePlots.map((plot) => (
-                <Card key={plot.id} className="overflow-hidden">
-                  <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5" />
+              {phases.map((phase) => (
+                <Card
+                  key={phase.id}
+                  className={
+                    phase.status === 'completed'
+                      ? 'border-accent bg-accent/5'
+                      : phase.status === 'in-progress'
+                        ? 'border-primary/20'
+                        : 'border-muted'
+                  }
+                >
                   <CardContent className="p-6">
-                    <div className="mb-4 flex items-center justify-between">
-                      <Badge>{plot.type}</Badge>
-                      <span className="text-sm text-muted-foreground">#{plot.id}</span>
-                    </div>
-                    <div className="mb-2 text-2xl font-bold">{plot.area}</div>
-                    <div className="mb-4 text-accent">{plot.price}</div>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href={`/plots/${plot.id}`}>Подробнее</Link>
-                    </Button>
+                    <Badge
+                      className={
+                        phase.status === 'completed'
+                          ? 'mb-4 bg-accent'
+                          : phase.status === 'in-progress'
+                            ? 'mb-4'
+                            : 'mb-4'
+                      }
+                      variant={phase.status === 'completed' ? 'default' : phase.status === 'in-progress' ? 'secondary' : 'outline'}
+                    >
+                      {phase.statusLabel}
+                    </Badge>
+                    <h3 className="mb-2 text-xl font-semibold">{phase.title}</h3>
+                    <p className="mb-3 text-muted-foreground">{phase.description}</p>
+                    <p className="text-lg font-bold text-accent">{phase.area}</p>
                   </CardContent>
                 </Card>
               ))}
             </div>
-
-            <div className="mt-10 text-center">
-              <Button asChild>
-                <Link href="/plots">
-                  Все площадки
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
           </div>
         </section>
 
-        {/* Residents Section */}
-        <section className="py-16 lg:py-24">
+        {/* Target Segments */}
+        <section className="bg-muted py-16 lg:py-24">
           <div className="container mx-auto px-4">
             <div className="mx-auto mb-12 max-w-2xl text-center">
-              <h2 className="mb-4">Наши резиденты</h2>
+              <h2 className="mb-4">Для кого</h2>
               <p className="text-lg text-muted-foreground">
-                Более 45 компаний уже успешно работают на территории парка
+                Решения для бизнеса любого масштаба
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-8">
-              {residents.map((resident) => (
-                <div
-                  key={resident.name}
-                  className="flex h-20 w-32 items-center justify-center rounded-lg border bg-card p-4"
-                  title={resident.name}
-                >
-                  <span className="text-2xl font-bold text-muted-foreground">{resident.logo}</span>
-                </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {targetSegments.map((segment) => (
+                <Card key={segment.id} className="bg-background">
+                  <CardContent className="p-6">
+                    <Badge variant="outline" className="mb-4">{segment.subtitle}</Badge>
+                    <h3 className="mb-2 text-xl font-semibold">{segment.title}</h3>
+                    <p className="text-muted-foreground">{segment.description}</p>
+                  </CardContent>
+                </Card>
               ))}
-            </div>
-
-            <div className="mt-10 text-center">
-              <Button variant="outline" asChild>
-                <Link href="/residents">
-                  Все резиденты и кейсы
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
             </div>
           </div>
         </section>
@@ -234,8 +238,8 @@ export default function Home() {
                   Готовы стать резидентом?
                 </h2>
                 <p className="mb-6 text-lg text-primary-foreground/80">
-                  Оставьте заявку и получите персональную консультацию. Мы поможем подобрать
-                  оптимальный участок под ваши задачи.
+                  Оставьте заявку и получите персональную консультацию. Подберём оптимальное
+                  решение под ваши задачи.
                 </p>
                 <ul className="space-y-3 text-primary-foreground/80">
                   <li className="flex items-center gap-2">
@@ -244,13 +248,18 @@ export default function Home() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                    Помощь в получении льгот и субсидий
+                    Персональный менеджер
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                    Юридическое сопровождение сделки
+                    Гибкие условия аренды
                   </li>
                 </ul>
+
+                <div className="mt-8 space-y-2 text-primary-foreground/70">
+                  <p className="font-medium text-primary-foreground">{company.phone}</p>
+                  <p>{company.email}</p>
+                </div>
               </div>
 
               <div
@@ -259,7 +268,7 @@ export default function Home() {
               >
                 <ContactForm
                   title="Оставить заявку"
-                  description="Заполните форму — мы свяжемся с вами в течение 15 минут"
+                  description="Заполните форму — мы свяжемся с вами"
                 />
               </div>
             </div>

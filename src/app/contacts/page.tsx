@@ -1,60 +1,43 @@
 import { Metadata } from 'next'
 import { Header, Footer } from '@/components/layout'
 import { ContactForm } from '@/components/features'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Clock, Mail, MapPin, Phone } from 'lucide-react'
+import { Card, CardContent } from '@/components/ui/card'
+import { Clock, Mail, MapPin, Phone, ExternalLink } from 'lucide-react'
+import { company } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: 'Контакты',
   description:
-    'Свяжитесь с нами для консультации по размещению вашего производства в индустриальном парке Красный Яр.',
+    'Свяжитесь с нами для консультации по размещению вашего производства в промышленном парке Красный Яр.',
 }
 
 const contacts = [
   {
     icon: Phone,
     title: 'Телефон',
-    value: '8 800 123-45-67',
-    description: 'Бесплатно по России',
-    href: 'tel:+78001234567',
+    value: company.phone,
+    description: company.mobile,
+    href: `tel:${company.phone.replace(/[^\d+]/g, '')}`,
   },
   {
     icon: Mail,
     title: 'Email',
-    value: 'info@krasny-yar.ru',
-    description: 'Ответим в течение дня',
-    href: 'mailto:info@krasny-yar.ru',
+    value: company.email,
+    description: 'Ответим в рабочее время',
+    href: `mailto:${company.email}`,
   },
   {
     icon: MapPin,
     title: 'Адрес',
-    value: 'Самарская область, Красный Яр',
-    description: 'ул. Промышленная, 1',
-    href: 'https://yandex.ru/maps/',
+    value: company.address.city,
+    description: company.address.street,
+    href: 'https://yandex.com/maps/-/CPBKQNnN',
   },
   {
     icon: Clock,
     title: 'Режим работы',
-    value: 'Пн-Пт: 9:00 — 18:00',
-    description: 'Сб: 10:00 — 15:00',
-  },
-]
-
-const departments = [
-  {
-    name: 'Отдел продаж',
-    phone: '+7 (846) 123-45-67',
-    email: 'sales@krasny-yar.ru',
-  },
-  {
-    name: 'Техническая служба',
-    phone: '+7 (846) 123-45-68',
-    email: 'tech@krasny-yar.ru',
-  },
-  {
-    name: 'Бухгалтерия',
-    phone: '+7 (846) 123-45-69',
-    email: 'buh@krasny-yar.ru',
+    value: company.workingHours,
+    description: 'Сб-Вс: выходной',
   },
 ]
 
@@ -71,7 +54,7 @@ export default function ContactsPage() {
               <h1 className="mb-6">Контакты</h1>
               <p className="text-lg text-primary-foreground/80 md:text-xl">
                 Свяжитесь с нами любым удобным способом. Мы ответим на все ваши вопросы и поможем
-                подобрать оптимальную площадку.
+                подобрать оптимальное решение.
               </p>
             </div>
           </div>
@@ -113,98 +96,28 @@ export default function ContactsPage() {
                 <ContactForm
                   variant="card"
                   title="Оставить заявку"
-                  description="Заполните форму — мы перезвоним в течение 15 минут в рабочее время"
+                  description="Заполните форму — мы перезвоним в рабочее время"
                 />
               </div>
 
-              {/* Map Placeholder */}
+              {/* Yandex Map */}
               <div className="order-first lg:order-last">
-                <Card className="h-full min-h-[400px]">
-                  <CardContent className="flex h-full items-center justify-center p-6">
-                    <div className="text-center">
-                      <MapPin className="mx-auto mb-4 h-12 w-12 text-muted-foreground/50" />
-                      <p className="text-muted-foreground">
-                        Карта будет добавлена
-                        <br />
-                        после интеграции с Яндекс.Картами
-                      </p>
-                    </div>
+                <Card className="h-full min-h-[400px] overflow-hidden">
+                  <CardContent className="h-full p-0">
+                    <iframe
+                      src="https://yandex.ru/map-widget/v1/-/CPBKQNnN&z=9"
+                      width="100%"
+                      height="100%"
+                      style={{ minHeight: '400px', border: 0 }}
+                      allowFullScreen
+                      title="Карта расположения Промпарка Красный Яр"
+                    />
                   </CardContent>
                 </Card>
+                <p className="mt-3 text-center text-sm text-muted-foreground">
+                  {company.address.full}
+                </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Departments */}
-        <section className="bg-muted py-16 lg:py-24">
-          <div className="container mx-auto px-4">
-            <h2 className="mb-12 text-center">Отделы</h2>
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {departments.map((dept) => (
-                <Card key={dept.name}>
-                  <CardHeader>
-                    <CardTitle className="text-lg">{dept.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    <a
-                      href={`tel:${dept.phone.replace(/\D/g, '')}`}
-                      className="flex items-center gap-2 text-sm hover:text-accent"
-                    >
-                      <Phone className="h-4 w-4" />
-                      {dept.phone}
-                    </a>
-                    <a
-                      href={`mailto:${dept.email}`}
-                      className="flex items-center gap-2 text-sm hover:text-accent"
-                    >
-                      <Mail className="h-4 w-4" />
-                      {dept.email}
-                    </a>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Requisites */}
-        <section className="py-16 lg:py-24">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-2xl">
-              <h2 className="mb-8 text-center">Реквизиты</h2>
-
-              <Card>
-                <CardContent className="p-6">
-                  <dl className="space-y-4 text-sm">
-                    <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-medium text-muted-foreground sm:w-40">
-                        Наименование:
-                      </dt>
-                      <dd>ООО «Управляющая компания Индустриальный парк Красный Яр»</dd>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-medium text-muted-foreground sm:w-40">ИНН:</dt>
-                      <dd>6312000000</dd>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-medium text-muted-foreground sm:w-40">КПП:</dt>
-                      <dd>631201001</dd>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-medium text-muted-foreground sm:w-40">ОГРН:</dt>
-                      <dd>1186312000000</dd>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:gap-4">
-                      <dt className="font-medium text-muted-foreground sm:w-40">
-                        Юридический адрес:
-                      </dt>
-                      <dd>443000, Самарская область, Красноярский район, с. Красный Яр, ул. Промышленная, д. 1</dd>
-                    </div>
-                  </dl>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </section>

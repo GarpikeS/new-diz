@@ -50,94 +50,95 @@
 }
 
 :root {
-  /* Красный Яр - Корпоративная палитра */
-  --background: oklch(0.98 0.002 247);
-  --foreground: oklch(0.18 0.02 250);
+  /* Промпарк Красный Яр - Корпоративная палитра */
+  /* Красный #c41e3a + Графитовый #2d2d2d + Белый #ffffff */
+  --background: oklch(0.97 0 0);
+  --foreground: oklch(0.22 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 250);
+  --card-foreground: oklch(0.22 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 250);
+  --popover-foreground: oklch(0.22 0 0);
 
-  /* Primary - Тёмно-синий #1A2332 */
-  --primary: oklch(0.22 0.03 250);
-  --primary-foreground: oklch(0.98 0 0);
+  /* Primary - Графитовый #2d2d2d */
+  --primary: oklch(0.22 0 0);
+  --primary-foreground: oklch(1 0 0);
 
-  /* Secondary - Стальной серый */
-  --secondary: oklch(0.92 0.005 250);
-  --secondary-foreground: oklch(0.22 0.03 250);
+  /* Secondary - Светло-серый */
+  --secondary: oklch(0.96 0 0);
+  --secondary-foreground: oklch(0.15 0 0);
 
-  --muted: oklch(0.95 0.003 250);
-  --muted-foreground: oklch(0.5 0.01 250);
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.45 0 0);
 
-  /* Accent - Индустриальный оранжевый #E67E22 */
-  --accent: oklch(0.72 0.16 55);
-  --accent-foreground: oklch(0.15 0.02 55);
+  /* Accent - Красный #c41e3a */
+  --accent: oklch(0.50 0.20 25);
+  --accent-foreground: oklch(1 0 0);
 
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0.005 250);
-  --input: oklch(0.92 0.005 250);
-  --ring: oklch(0.72 0.16 55);
+  --destructive: oklch(0.50 0.20 25);
+  --border: oklch(0.90 0 0);
+  --input: oklch(0.92 0 0);
+  --ring: oklch(0.50 0.20 25);
 
   /* Charts */
-  --chart-1: oklch(0.72 0.16 55);
-  --chart-2: oklch(0.22 0.03 250);
-  --chart-3: oklch(0.5 0.12 250);
-  --chart-4: oklch(0.65 0.1 55);
-  --chart-5: oklch(0.4 0.02 250);
+  --chart-1: oklch(0.50 0.20 25);
+  --chart-2: oklch(0.15 0 0);
+  --chart-3: oklch(0.35 0 0);
+  --chart-4: oklch(0.60 0.15 25);
+  --chart-5: oklch(0.25 0 0);
 
   --radius: 0.5rem;
 
   /* Sidebar */
-  --sidebar: oklch(0.22 0.03 250);
-  --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.72 0.16 55);
-  --sidebar-primary-foreground: oklch(0.15 0.02 55);
-  --sidebar-accent: oklch(0.28 0.03 250);
-  --sidebar-accent-foreground: oklch(0.95 0 0);
-  --sidebar-border: oklch(0.3 0.02 250);
-  --sidebar-ring: oklch(0.72 0.16 55);
+  --sidebar: oklch(0.15 0 0);
+  --sidebar-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.50 0.20 25);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.22 0 0);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.25 0 0);
+  --sidebar-ring: oklch(0.50 0.20 25);
 }
 
 .dark {
-  /* Красный Яр - Dark Theme */
-  --background: oklch(0.12 0.02 250);
+  /* Промпарк Красный Яр - Dark Theme */
+  --background: oklch(0.12 0 0);
   --foreground: oklch(0.95 0 0);
-  --card: oklch(0.18 0.02 250);
+  --card: oklch(0.15 0 0);
   --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.18 0.02 250);
+  --popover: oklch(0.15 0 0);
   --popover-foreground: oklch(0.95 0 0);
 
-  --primary: oklch(0.72 0.16 55);
-  --primary-foreground: oklch(0.15 0.02 55);
+  --primary: oklch(0.50 0.20 25);
+  --primary-foreground: oklch(1 0 0);
 
-  --secondary: oklch(0.22 0.02 250);
+  --secondary: oklch(0.22 0 0);
   --secondary-foreground: oklch(0.95 0 0);
 
-  --muted: oklch(0.25 0.02 250);
-  --muted-foreground: oklch(0.6 0.01 250);
+  --muted: oklch(0.22 0 0);
+  --muted-foreground: oklch(0.55 0 0);
 
-  --accent: oklch(0.72 0.16 55);
-  --accent-foreground: oklch(0.15 0.02 55);
+  --accent: oklch(0.50 0.20 25);
+  --accent-foreground: oklch(1 0 0);
 
-  --destructive: oklch(0.704 0.191 22.216);
+  --destructive: oklch(0.55 0.22 25);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.72 0.16 55);
+  --ring: oklch(0.50 0.20 25);
 
-  --chart-1: oklch(0.75 0.15 55);
-  --chart-2: oklch(0.5 0.12 250);
-  --chart-3: oklch(0.6 0.1 250);
-  --chart-4: oklch(0.65 0.1 55);
-  --chart-5: oklch(0.45 0.02 250);
+  --chart-1: oklch(0.55 0.18 25);
+  --chart-2: oklch(0.45 0 0);
+  --chart-3: oklch(0.55 0 0);
+  --chart-4: oklch(0.60 0.15 25);
+  --chart-5: oklch(0.35 0 0);
 
-  --sidebar: oklch(0.15 0.02 250);
+  --sidebar: oklch(0.12 0 0);
   --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.72 0.16 55);
-  --sidebar-primary-foreground: oklch(0.15 0.02 55);
-  --sidebar-accent: oklch(0.22 0.02 250);
+  --sidebar-primary: oklch(0.50 0.20 25);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.18 0 0);
   --sidebar-accent-foreground: oklch(0.95 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.72 0.16 55);
+  --sidebar-ring: oklch(0.50 0.20 25);
 }
 
 @layer base {
@@ -151,8 +152,8 @@
     @apply font-sans;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading), var(--font-sans), system-ui, sans-serif;
-    @apply font-semibold tracking-tight;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    @apply font-bold tracking-tight;
   }
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl;

@@ -4,13 +4,14 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Menu, Phone, X } from 'lucide-react'
+import { company } from '@/lib/data'
 
 const navigation = [
   { name: 'О парке', href: '/about' },
   { name: 'Площадки', href: '/plots' },
+  { name: 'Карта', href: '/map' },
   { name: 'Инфраструктура', href: '/infrastructure' },
   { name: 'Резиденты', href: '/residents' },
-  { name: 'Новости', href: '/news' },
   { name: 'Контакты', href: '/contacts' },
 ]
 
@@ -22,13 +23,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:h-20">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <span className="text-lg font-bold">КЯ</span>
-          </div>
-          <div className="hidden sm:block">
-            <div className="text-lg font-semibold leading-tight">Красный Яр</div>
-            <div className="text-xs text-muted-foreground">Индустриальный парк</div>
-          </div>
+          <img src="/logo.png" alt="Промпарк Красный Яр" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -37,7 +32,7 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
               {item.name}
             </Link>
@@ -47,13 +42,13 @@ export function Header() {
         {/* Desktop CTA */}
         <div className="hidden items-center gap-4 lg:flex">
           <a
-            href="tel:+78001234567"
+            href={`tel:${company.phone.replace(/[^\d+]/g, '')}`}
             className="flex items-center gap-2 text-sm font-medium text-foreground"
           >
-            <Phone className="h-4 w-4" />
-            <span>8 800 123-45-67</span>
+            <Phone className="h-4 w-4 text-accent" />
+            <span>{company.phone}</span>
           </a>
-          <Button asChild>
+          <Button className="bg-accent text-accent-foreground hover:bg-accent/90" asChild>
             <Link href="/contacts#form">Оставить заявку</Link>
           </Button>
         </div>
@@ -80,7 +75,7 @@ export function Header() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-accent"
+                  className="rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-muted"
                 >
                   {item.name}
                 </Link>
@@ -88,13 +83,13 @@ export function Header() {
             </div>
             <div className="mt-4 border-t pt-4">
               <a
-                href="tel:+78001234567"
+                href={`tel:${company.phone.replace(/[^\d+]/g, '')}`}
                 className="mb-4 flex items-center gap-2 px-3 text-sm font-medium"
               >
-                <Phone className="h-4 w-4" />
-                <span>8 800 123-45-67</span>
+                <Phone className="h-4 w-4 text-accent" />
+                <span>{company.phone}</span>
               </a>
-              <Button asChild className="w-full">
+              <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
                 <Link href="/contacts#form" onClick={() => setIsOpen(false)}>
                   Оставить заявку
                 </Link>

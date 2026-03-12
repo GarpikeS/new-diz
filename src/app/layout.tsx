@@ -1,17 +1,12 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Montserrat } from 'next/font/google'
+import { PT_Sans } from 'next/font/google'
 import { OrganizationJsonLd } from '@/components/seo'
 import './globals.css'
 
-const inter = Inter({
+const ptSans = PT_Sans({
   variable: '--font-sans',
   subsets: ['latin', 'cyrillic'],
-  display: 'swap',
-})
-
-const montserrat = Montserrat({
-  variable: '--font-heading',
-  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '700'],
   display: 'swap',
 })
 
@@ -20,14 +15,18 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://krasny-yar.ru'
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#1A2332',
+  themeColor: '#2d2d2d',
 }
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   title: {
-    default: 'Индустриальный парк Красный Яр — аренда производственных площадей',
-    template: '%s | ИП Красный Яр',
+    default: 'Промпарк Красный Яр — производственная площадка в Красноярске',
+    template: '%s | Промпарк Красный Яр',
   },
   description:
     'Современный индустриальный парк для размещения производственных и логистических объектов. Участки от 1500 м², готовая инфраструктура: электричество до 2 МВт, газ, ж/д ветка.',
@@ -99,7 +98,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${inter.variable} ${montserrat.variable} font-sans antialiased`}>
+      <body className={`${ptSans.variable} font-sans antialiased`}>
         <OrganizationJsonLd />
         {children}
       </body>
