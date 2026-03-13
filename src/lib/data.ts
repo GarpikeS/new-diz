@@ -34,10 +34,11 @@ export const spaceFormats = [
     description: 'Высота потолков до 13 м. Мощность электроснабжения до 31,5 МВт. Наличие кран-балок. Площадь до 5 000 м².',
     icon: 'Factory',
     features: [
-      'Высота потолков до 13 м',
-      'Электроснабжение до 31,5 МВт',
-      'Кран-балки',
-      'Площадь до 5 000 м²',
+      'Высота помещений до 13 м',
+      'Нагрузка на полы 5 т/м²',
+      'Кран-балки до 10 т',
+      'Площади от 1 500 м²',
+      'Электроснабжение опционально',
     ],
   },
   {
@@ -46,10 +47,10 @@ export const spaceFormats = [
     description: 'Гибкие помещения для производства и хранения. Минимальный блок от 480 м². Высота потолков 6-8 м. 21 800 м² во 2-й очереди.',
     icon: 'Warehouse',
     features: [
-      'Минимальный блок от 480 м²',
-      'Офисная часть',
-      'Высота потолков 6-8 м',
-      'Повышенное электроснабжение',
+      'Площадь от 480 м²',
+      'Нагрузка на полы 3 т/м²',
+      'Высота помещений 8 м',
+      'Электроснабжение опционально',
     ],
   },
   {
@@ -58,10 +59,10 @@ export const spaceFormats = [
     description: 'Современные офисы от 20 м². Переговорные и конференц-залы.',
     icon: 'Building2',
     features: [
-      'Минимальный размер от 20 м²',
+      'Площадь от 20 м²',
       'Современная отделка',
-      'Переговорные',
-      'Конференц-залы',
+      'Конференц-зал',
+      'Видеонаблюдение',
     ],
   },
 ]
@@ -103,20 +104,20 @@ export const infrastructure = [
 // Benefits
 export const benefits = [
   {
-    title: 'Готовая инфраструктура',
-    description: 'Все инженерные коммуникации подведены и готовы к подключению',
+    title: 'Собственная подстанция',
+    description: 'Мощность 31,5 МВт, надёжное электроснабжение.',
   },
   {
-    title: 'Гибкое использование пространства',
-    description: 'Помещения от 20 м² до 5 000 м² с возможностью объединения',
+    title: 'Централизованное отопление',
+    description: 'Тепло-, водоснабжение и канализация.',
   },
   {
-    title: 'Полный сервис',
-    description: 'Собственная управляющая компания обеспечивает обслуживание 24/7',
+    title: 'Охрана',
+    description: 'Охраняемая территория, СКУД, контроль доступа 24/7.',
   },
   {
-    title: 'Индивидуальный подход',
-    description: 'Персональный менеджер для каждого резидента',
+    title: 'Видеонаблюдение',
+    description: 'Круглосуточный мониторинг всей территории парка.',
   },
 ]
 
@@ -125,32 +126,46 @@ export const targetSegments = [
   {
     id: 'small',
     title: 'Малый бизнес',
-    subtitle: 'Стартапы',
-    description: 'Офисы и склады от 20 м². Гибкие условия аренды. Минимальные начальные затраты.',
+    subtitle: 'от 200 до 500 м²',
+    features: [
+      'Офисы и склады',
+      'Гибкие условия аренды',
+    ],
   },
   {
     id: 'medium',
     title: 'Средний бизнес',
-    subtitle: 'Растущие компании',
-    description: 'Light Industrial от 500 м². Производство + склад + офис в одном блоке. Гибкая планировка.',
+    subtitle: 'от 500 до 1 000 м²',
+    features: [
+      'Склад + офис',
+      'Гибкая планировка',
+      'Нагрузка на пол 3 т/м²',
+    ],
   },
   {
     id: 'large',
     title: 'Крупный бизнес',
-    subtitle: 'Корпорации',
-    description: 'Производственные помещения до 5 000 м². Индивидуальные условия аренды.',
+    subtitle: 'от 1 500 м²',
+    features: [
+      'Нагрузка от 5 т/м²',
+      'Индивидуальные условия',
+      'По проекту заказчика',
+    ],
   },
 ]
 
 // Plot types
-export type PlotType = 'production' | 'warehouse' | 'office' | 'light-industrial'
+export type PlotType = 'production' | 'office'
+export type DealType = 'rent' | 'sale'
 
 export interface Plot {
   id: string
   title: string
   type: PlotType
+  dealType: DealType
   area: number
   price: number
+  totalPrice?: number
   status: 'available' | 'reserved' | 'occupied'
   power?: number
   height?: number
@@ -159,11 +174,18 @@ export interface Plot {
   images: string[]
 }
 
+export const dealTypeLabels: Record<DealType, string> = {
+  rent: 'Аренда',
+  sale: 'Покупка',
+}
+
 export const plots: Plot[] = [
+  // Аренда
   {
     id: '1',
     title: 'Производственное помещение А1',
     type: 'production',
+    dealType: 'rent',
     area: 2500,
     price: 350,
     status: 'available',
@@ -181,49 +203,12 @@ export const plots: Plot[] = [
   },
   {
     id: '2',
-    title: 'Склад B2',
-    type: 'warehouse',
-    area: 3000,
-    price: 280,
-    status: 'available',
-    power: 150,
-    height: 8,
-    description: 'Складское помещение с удобной погрузочной зоной и разворотной площадкой.',
-    features: [
-      'Высота потолков 8 м',
-      'Погрузочная рампа',
-      'Электричество 150 кВт',
-      'Разворотная площадка для фур',
-      'Охраняемая территория',
-    ],
-    images: [],
-  },
-  {
-    id: '3',
-    title: 'Light Industrial C1',
-    type: 'light-industrial',
-    area: 1200,
-    price: 400,
-    status: 'available',
-    power: 200,
-    height: 7,
-    description: 'Универсальное помещение Light Industrial: производство + склад + офис в одном блоке.',
-    features: [
-      'Высота потолков 7 м',
-      'Офисная зона',
-      'Электричество 200 кВт',
-      'Гибкая планировка',
-      'Отдельный вход',
-    ],
-    images: [],
-  },
-  {
-    id: '4',
     title: 'Офис D1',
     type: 'office',
+    dealType: 'rent',
     area: 150,
     price: 800,
-    status: 'reserved',
+    status: 'available',
     description: 'Современный офис с переговорной комнатой и зоной ресепшн.',
     features: [
       'Современная отделка',
@@ -235,9 +220,10 @@ export const plots: Plot[] = [
     images: [],
   },
   {
-    id: '5',
+    id: '3',
     title: 'Производственное помещение А2',
     type: 'production',
+    dealType: 'rent',
     area: 5000,
     price: 320,
     status: 'available',
@@ -249,26 +235,45 @@ export const plots: Plot[] = [
       'Кран-балка 10 тонн',
       'Электричество 1 МВт',
       'Газоснабжение высокого давления',
-      'Ж/Д ветка рядом',
+    ],
+    images: [],
+  },
+  // Покупка
+  {
+    id: '4',
+    title: 'Производственный корпус Б1',
+    type: 'production',
+    dealType: 'sale',
+    area: 3500,
+    price: 45000,
+    totalPrice: 157500000,
+    status: 'available',
+    power: 800,
+    height: 10,
+    description: 'Производственный корпус в собственность. Готов к эксплуатации.',
+    features: [
+      'Высота потолков 10 м',
+      'Электричество 800 кВт',
+      'Газоснабжение',
+      'Собственная территория',
     ],
     images: [],
   },
   {
-    id: '6',
-    title: 'Light Industrial C2',
-    type: 'light-industrial',
-    area: 480,
-    price: 450,
+    id: '5',
+    title: 'Офисное помещение Е1',
+    type: 'office',
+    dealType: 'sale',
+    area: 200,
+    price: 85000,
+    totalPrice: 17000000,
     status: 'available',
-    power: 100,
-    height: 6,
-    description: 'Минимальный блок Light Industrial. Идеально для малого производства или склада с офисом.',
+    description: 'Офис в собственность с современной отделкой.',
     features: [
-      'Минимальный блок 480 м²',
-      'Высота 6 м',
-      'Офисная зона 50 м²',
-      'Электричество 100 кВт',
-      'Отдельный вход',
+      'Современная отделка',
+      'Кондиционирование',
+      'Парковочные места',
+      'Охраняемая территория',
     ],
     images: [],
   },
@@ -276,9 +281,7 @@ export const plots: Plot[] = [
 
 export const plotTypeLabels: Record<PlotType, string> = {
   production: 'Производство',
-  warehouse: 'Склад',
   office: 'Офис',
-  'light-industrial': 'Light Industrial',
 }
 
 export const plotStatusLabels: Record<Plot['status'], string> = {
@@ -297,15 +300,15 @@ export interface Resident {
 }
 
 export const residents: Resident[] = [
-  { id: '1', name: 'СибТехно', logo: 'СТ', industry: 'Машиностроение', description: 'Производство промышленного оборудования' },
-  { id: '2', name: 'КрасПласт', logo: 'КП', industry: 'Полимеры', description: 'Производство пластиковых изделий' },
-  { id: '3', name: 'ЭнергоМонтаж', logo: 'ЭМ', industry: 'Электротехника', description: 'Электромонтажные работы и оборудование' },
-  { id: '4', name: 'СибЛогистик', logo: 'СЛ', industry: 'Логистика', description: 'Складские услуги и логистика' },
-  { id: '5', name: 'МеталлСтрой', logo: 'МС', industry: 'Металлоконструкции', description: 'Изготовление металлоконструкций' },
-  { id: '6', name: 'ТехноПак', logo: 'ТП', industry: 'Упаковка', description: 'Производство упаковочных материалов' },
-  { id: '7', name: 'СибМебель', logo: 'СМ', industry: 'Мебель', description: 'Производство мебели' },
-  { id: '8', name: 'АгроТех', logo: 'АТ', industry: 'Агротехника', description: 'Производство сельхозоборудования' },
-  { id: '9', name: 'КрасЭлектро', logo: 'КЭ', industry: 'Электроника', description: 'Сборка электронных компонентов' },
+  { id: '1', name: 'АО «Спецтехномаш»', logo: '/residents/res-1.jpg', industry: 'Машиностроение', description: 'Производство обогатительного оборудования для добывающей и перерабатывающей промышленности' },
+  { id: '2', name: 'ООО «УралСибТрейд-Красноярск»', logo: '/residents/res-2.jpg', industry: 'Металлообработка', description: 'Изготовление изделий из проволоки и пружин для различных отраслей' },
+  { id: '3', name: 'ООО «Грузовая механика»', logo: '/residents/res-3.jpg', industry: 'Подъёмное оборудование', description: 'Выпуск тканевых стропов, стальных цепей и подъёмных механизмов' },
+  { id: '4', name: 'ООО «Завод металлоконструкций»', logo: '/residents/res-4.jpg', industry: 'Металлоконструкции', description: 'Производство металлоконструкций, бункеров и резервуаров' },
+  { id: '5', name: 'ООО «ИлАр»', logo: '/residents/res-5.jpg', industry: 'Строительство', description: 'Производство строительных конструкций из металла и сеток' },
+  { id: '6', name: 'ООО «ТР Резерв»', logo: '/residents/res-6.jpg', industry: 'Металлоконструкции', description: 'Выпуск строительных металлических конструкций и цистерн' },
+  { id: '7', name: 'ООО «Континенталь»', logo: '/residents/res-7.jpg', industry: 'Металлопрокат', description: 'Обработка металла и торговля металлопрокатом' },
+  { id: '8', name: 'ООО «ОТК»', logo: '/residents/res-8.jpg', industry: 'Металлоизделия', description: 'Производство металлических конструкций и изделий' },
+  { id: '9', name: '4UPRINT', logo: '/residents/res-9.jpg', industry: 'Полиграфия', description: 'Полиграфическая деятельность и издание печатной продукции' },
 ]
 
 // News

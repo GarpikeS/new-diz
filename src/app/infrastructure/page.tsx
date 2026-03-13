@@ -1,24 +1,29 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { Header, Footer } from '@/components/layout'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import {
-  ArrowRight,
   Droplets,
   Flame,
   Globe,
+  MapPin,
   Shield,
-  Train,
   Truck,
   Wifi,
   Zap,
+  Thermometer,
+  Eye,
+  Car,
+  Wrench,
+  Sparkles,
+  TreePine,
+  Hammer,
+  Plug,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Инфраструктура',
   description:
-    'Инженерная и транспортная инфраструктура индустриального парка Красный Яр. Энергоснабжение, газ, вода, ж/д ветка.',
+    'Инженерная и транспортная инфраструктура индустриального парка Красный Яр. Энергоснабжение, газ, вода.',
 }
 
 const infrastructure = [
@@ -27,21 +32,17 @@ const infrastructure = [
     title: 'Электроснабжение',
     description: 'Собственная подстанция 110/10 кВ',
     specs: [
-      { label: 'Общая мощность', value: '50 МВт' },
-      { label: 'Резервирование', value: '2 независимых ввода' },
-      { label: 'Напряжение', value: '10 кВ / 0,4 кВ' },
-      { label: 'Срок подключения', value: 'от 30 дней' },
+      { label: 'Мощность', value: '31,5 МВт' },
+      { label: 'Резерв', value: 'Есть' },
     ],
   },
   {
-    icon: Flame,
-    title: 'Газоснабжение',
-    description: 'Природный газ высокого давления',
+    icon: Thermometer,
+    title: 'Теплоснабжение',
+    description: 'Централизованная система отопления',
     specs: [
-      { label: 'Давление', value: '0.6 МПа' },
-      { label: 'Пропускная способность', value: '15 000 м³/час' },
-      { label: 'ГРПШ', value: 'На территории' },
-      { label: 'Срок подключения', value: 'от 45 дней' },
+      { label: 'Мощность', value: '4 Гкал' },
+      { label: 'Подключение', value: 'Быстрое' },
     ],
   },
   {
@@ -49,54 +50,67 @@ const infrastructure = [
     title: 'Водоснабжение',
     description: 'Централизованное водоснабжение и канализация',
     specs: [
-      { label: 'Источник', value: 'Городской водоканал' },
-      { label: 'Давление', value: '4 атм' },
-      { label: 'Очистные сооружения', value: 'Собственные' },
-      { label: 'Ливневая канализация', value: 'Есть' },
+      { label: 'Водоснабжение', value: '101,2 м³/сут' },
+      { label: 'Водоотведение', value: '91,2 м³/сут' },
     ],
   },
   {
     icon: Wifi,
-    title: 'Телекоммуникации',
-    description: 'Оптоволоконные линии связи',
+    title: 'Интернет и связь',
+    description: 'Оптоволоконное подключение от 5 провайдеров',
     specs: [
-      { label: 'Провайдеры', value: '3 оператора' },
       { label: 'Скорость', value: 'до 10 Гбит/с' },
-      { label: 'Резервирование', value: '2 независимых канала' },
-      { label: 'Срок подключения', value: '7 дней' },
+      { label: 'IP-телефония', value: 'Есть' },
     ],
   },
 ]
 
-const transport = [
+const transportAndSecurity = [
+  { icon: MapPin, title: 'Расположение', description: '15 минут от центра города, 10 км до трассы М-53, 40 км до аэропорта' },
+  { icon: Truck, title: 'Грузовой транспорт', description: 'Удобный подъезд для транспорта любого тоннажа' },
+  { icon: Car, title: 'Парковка', description: 'Парковочные площадки для сотрудников и посетителей' },
+  { icon: Shield, title: 'Охрана 24/7', description: 'Круглосуточная охрана территории, контрольно-пропускной режим' },
+  { icon: Eye, title: 'Камеры', description: 'Система видеонаблюдения по всей территории парка' },
+]
+
+const services = [
   {
-    icon: Truck,
-    title: 'Автотранспорт',
-    items: [
-      '15 км до федеральной трассы М-5',
-      'Асфальтированные дороги внутри парка',
-      'Ширина проезда 12 м',
-      'Грузоподъемность до 60 тонн',
-      'Разворотные площадки для фур',
-    ],
+    icon: Wrench,
+    title: 'Техническое обслуживание',
+    items: ['Обслуживание электросетей', 'Вентиляция и кондиционирование', 'Водоснабжение и канализация', 'Отопление'],
   },
   {
-    icon: Train,
-    title: 'Железная дорога',
-    items: [
-      'Собственный подъездной путь',
-      'Прямое подключение к магистрали РЖД',
-      'Погрузочно-разгрузочная площадка',
-      'Козловой кран 32 тонны',
-      'Оперативная подача вагонов',
-    ],
+    icon: Sparkles,
+    title: 'Клининг',
+    items: ['Уборка мест общего пользования', 'Уборка территории', 'Мойка окон и фасадов', 'Вывоз мусора'],
+  },
+  {
+    icon: Shield,
+    title: 'Охрана и безопасность',
+    items: ['Видеонаблюдение', 'Охранная сигнализация', 'Патрулирование территории', 'Пожарная безопасность'],
+  },
+  {
+    icon: TreePine,
+    title: 'Благоустройство',
+    items: ['Содержание дорог', 'Уход за зелёными насаждениями', 'Освещение территории', 'Парковочные зоны'],
+  },
+  {
+    icon: Hammer,
+    title: 'Ремонтные работы',
+    items: ['Аварийный ремонт', 'Плановый ремонт', 'Отделочные работы', 'Ремонт кровли и фасадов'],
+  },
+  {
+    icon: Plug,
+    title: 'Коммунальные услуги',
+    items: ['Электроснабжение', 'Теплоснабжение', 'Водоснабжение', 'Ливневая канализация'],
   },
 ]
 
-const security = [
-  { icon: Shield, title: 'КПП 24/7', description: 'Контрольно-пропускной режим' },
-  { icon: Globe, title: 'Видеонаблюдение', description: 'Камеры по периметру и на дорогах' },
-  { icon: Shield, title: 'Охрана территории', description: 'Патрулирование и реагирование' },
+const documents = [
+  { title: 'Сертификат соответствия ГОСТ Р 56301-2014', description: 'Подтверждение статуса промышленного парка' },
+  { title: 'Свидетельство о включении в реестр Минпромторга', description: 'Федеральный реестр промышленных парков РФ' },
+  { title: 'Договор аренды', description: 'Типовой договор аренды помещений' },
+  { title: 'Правила внутреннего распорядка', description: 'Регламент работы на территории парка' },
 ]
 
 export default function InfrastructurePage() {
@@ -106,51 +120,36 @@ export default function InfrastructurePage() {
 
       <main>
         {/* Hero */}
-        <section className="bg-primary py-16 text-primary-foreground lg:py-24">
+        <section className="bg-primary py-12 text-primary-foreground lg:py-16">
           <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="mb-6">Инфраструктура</h1>
-              <p className="text-lg text-primary-foreground/80 md:text-xl">
-                Полный комплекс инженерных коммуникаций и транспортной доступности для бесперебойной
-                работы вашего производства.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Key advantage */}
-        <section className="border-b bg-accent py-8 text-accent-foreground">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-lg font-medium">
-              Подключение к коммуникациям — от 30 дней с момента заключения договора
+            <h1 className="mb-4">Инфраструктура</h1>
+            <p className="max-w-2xl text-lg text-primary-foreground/80">
+              Полный комплекс инженерных коммуникаций и транспортной доступности для бесперебойной
+              работы вашего производства.
             </p>
           </div>
         </section>
 
         {/* Engineering Infrastructure */}
-        <section className="py-16 lg:py-24">
+        <section className="py-12 lg:py-16">
           <div className="container mx-auto px-4">
-            <h2 className="mb-12 text-center">Инженерные сети</h2>
+            <h2 className="mb-8">Инженерные сети</h2>
 
-            <div className="grid gap-8 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {infrastructure.map((item) => (
                 <Card key={item.title}>
-                  <CardHeader>
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
-                        <item.icon className="h-6 w-6 text-accent" />
+                  <CardContent className="p-5">
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
+                        <item.icon className="h-5 w-5 text-accent" />
                       </div>
-                      <div>
-                        <CardTitle>{item.title}</CardTitle>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
-                      </div>
+                      <h3 className="font-semibold">{item.title}</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <dl className="grid grid-cols-2 gap-4">
+                    <p className="mb-3 text-sm text-muted-foreground">{item.description}</p>
+                    <dl className="space-y-1 text-sm">
                       {item.specs.map((spec) => (
-                        <div key={spec.label}>
-                          <dt className="text-sm text-muted-foreground">{spec.label}</dt>
+                        <div key={spec.label} className="flex justify-between">
+                          <dt className="text-muted-foreground">{spec.label}</dt>
                           <dd className="font-medium">{spec.value}</dd>
                         </div>
                       ))}
@@ -162,29 +161,45 @@ export default function InfrastructurePage() {
           </div>
         </section>
 
-        {/* Transport */}
-        <section className="bg-muted py-16 lg:py-24">
+        {/* Transport & Security */}
+        <section id="transport" className="border-t bg-muted py-8 lg:py-10">
           <div className="container mx-auto px-4">
-            <h2 className="mb-12 text-center">Транспортная доступность</h2>
+            <h2 className="mb-6">Транспорт и безопасность</h2>
 
-            <div className="grid gap-8 md:grid-cols-2">
-              {transport.map((item) => (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+              {transportAndSecurity.map((item) => (
                 <Card key={item.title}>
-                  <CardHeader>
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                        <item.icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <CardTitle>{item.title}</CardTitle>
+                  <CardContent className="p-5">
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                      <item.icon className="h-5 w-5 text-primary" />
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {item.items.map((text) => (
-                        <li key={text} className="flex items-start gap-2">
-                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                          <span>{text}</span>
-                        </li>
+                    <h3 className="mb-1 font-semibold">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Services */}
+        <section id="services" className="border-t py-8 lg:py-10">
+          <div className="container mx-auto px-4">
+            <h2 className="mb-6">Услуги</h2>
+
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {services.map((service) => (
+                <Card key={service.title}>
+                  <CardContent className="p-5">
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
+                        <service.icon className="h-5 w-5 text-accent" />
+                      </div>
+                      <h3 className="font-semibold">{service.title}</h3>
+                    </div>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                      {service.items.map((item) => (
+                        <li key={item}>• {item}</li>
                       ))}
                     </ul>
                   </CardContent>
@@ -194,18 +209,17 @@ export default function InfrastructurePage() {
           </div>
         </section>
 
-        {/* Security */}
-        <section className="py-16 lg:py-24">
+        {/* Documents */}
+        <section id="documents" className="border-t bg-muted py-8 lg:py-10">
           <div className="container mx-auto px-4">
-            <h2 className="mb-12 text-center">Безопасность</h2>
+            <h2 className="mb-6">Документы</h2>
 
-            <div className="grid gap-6 md:grid-cols-3">
-              {security.map((item) => (
-                <Card key={item.title}>
-                  <CardContent className="p-6 text-center">
-                    <item.icon className="mx-auto mb-4 h-10 w-10 text-primary" />
-                    <h3 className="mb-2 font-semibold">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {documents.map((doc) => (
+                <Card key={doc.title}>
+                  <CardContent className="p-5">
+                    <h3 className="mb-1 font-semibold">{doc.title}</h3>
+                    <p className="text-sm text-muted-foreground">{doc.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -213,74 +227,6 @@ export default function InfrastructurePage() {
           </div>
         </section>
 
-        {/* Technical specs table */}
-        <section className="bg-muted py-16 lg:py-24">
-          <div className="container mx-auto px-4">
-            <h2 className="mb-8 text-center">Сводная таблица характеристик</h2>
-
-            <div className="mx-auto max-w-3xl overflow-hidden rounded-lg border bg-card">
-              <table className="w-full text-sm">
-                <thead className="bg-muted">
-                  <tr>
-                    <th className="px-4 py-3 text-left font-medium">Параметр</th>
-                    <th className="px-4 py-3 text-left font-medium">Значение</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y">
-                  <tr>
-                    <td className="px-4 py-3">Общая площадь парка</td>
-                    <td className="px-4 py-3 font-medium">150 га</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-3">Электрическая мощность</td>
-                    <td className="px-4 py-3 font-medium">50 МВт</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-3">Газоснабжение</td>
-                    <td className="px-4 py-3 font-medium">15 000 м³/час</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-3">Водоснабжение</td>
-                    <td className="px-4 py-3 font-medium">Централизованное</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-3">Канализация</td>
-                    <td className="px-4 py-3 font-medium">Централизованная + ливневая</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-3">Ж/Д ветка</td>
-                    <td className="px-4 py-3 font-medium">Собственная</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-3">До трассы М-5</td>
-                    <td className="px-4 py-3 font-medium">15 км</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-3">Интернет</td>
-                    <td className="px-4 py-3 font-medium">до 10 Гбит/с</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="bg-primary py-16 text-primary-foreground">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="mb-4">Нужна консультация по подключению?</h2>
-            <p className="mx-auto mb-8 max-w-2xl text-primary-foreground/80">
-              Наши специалисты расскажут о технических возможностях и рассчитают стоимость
-              подключения для вашего объекта.
-            </p>
-            <Button size="lg" variant="secondary" asChild>
-              <Link href="/contacts#form">
-                Получить консультацию
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </section>
       </main>
 
       <Footer />

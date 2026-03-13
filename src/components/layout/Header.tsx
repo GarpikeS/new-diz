@@ -9,8 +9,8 @@ import { company } from '@/lib/data'
 const navigation = [
   { name: 'О парке', href: '/about' },
   { name: 'Площадки', href: '/plots' },
-  { name: 'Карта', href: '/map' },
-  { name: 'Инфраструктура', href: '/infrastructure' },
+  { name: 'Инвесторам', href: '/investors' },
+  { name: 'Управляющая компания', href: '/infrastructure' },
   { name: 'Резиденты', href: '/residents' },
   { name: 'Контакты', href: '/contacts' },
 ]
@@ -24,6 +24,10 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <img src="/logo.png" alt="Промпарк Красный Яр" className="h-10 w-auto" />
+          <div className="hidden flex-col sm:flex">
+            <span className="text-sm font-semibold leading-tight">Промпарк Красный Яр</span>
+            <span className="text-xs text-muted-foreground">Современные производственные площади</span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}

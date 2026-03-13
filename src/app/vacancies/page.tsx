@@ -69,18 +69,18 @@ export default function VacanciesPage() {
 
       <main>
         {/* Hero */}
-        <section className="bg-primary py-16 text-primary-foreground lg:py-24">
+        <section className="bg-primary py-8 text-primary-foreground lg:py-10">
           <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-3xl text-center">
-              <Badge variant="outline" className="mb-4 border-accent text-accent">
-                {vacancies.length} открытых вакансий
+            <div className="mb-4 flex items-center gap-3">
+              <h1 className="mb-0">Вакансии</h1>
+              <Badge variant="outline" className="border-accent text-accent">
+                {vacancies.length} открытых
               </Badge>
-              <h1 className="mb-6">Вакансии</h1>
-              <p className="text-lg text-primary-foreground/80 md:text-xl">
-                Присоединяйтесь к команде промышленного парка «Красный Яр».
-                Мы предлагаем стабильную работу и возможности для профессионального роста.
-              </p>
             </div>
+            <p className="max-w-2xl text-lg text-primary-foreground/80">
+              Присоединяйтесь к команде промышленного парка «Красный Яр».
+              Мы предлагаем стабильную работу и возможности для профессионального роста.
+            </p>
           </div>
         </section>
 
@@ -99,11 +99,11 @@ export default function VacanciesPage() {
         </section>
 
         {/* Vacancies List */}
-        <section className="py-16 lg:py-24">
+        <section className="py-8 lg:py-10">
           <div className="container mx-auto px-4">
-            <h2 className="mb-8">Открытые вакансии</h2>
+            <h2 className="mb-6">Открытые вакансии</h2>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {vacancies.map((vacancy) => (
                 <Card key={vacancy.id}>
                   <CardHeader>
@@ -149,7 +149,7 @@ export default function VacanciesPage() {
         </section>
 
         {/* No suitable vacancy */}
-        <section className="bg-muted py-16 lg:py-24">
+        <section className="bg-muted py-8 lg:py-10">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center">
               <Briefcase className="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
@@ -176,7 +176,7 @@ export default function VacanciesPage() {
         </section>
 
         {/* Residents hiring */}
-        <section className="py-16 lg:py-24">
+        <section className="border-t py-8 lg:py-10">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="mb-4">Вакансии у резидентов</h2>
