@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Header, Footer } from '@/components/layout'
 import { Button } from '@/components/ui/button'
+import { ContactButton } from '@/components/features'
 import { Badge } from '@/components/ui/badge'
 import {
   Select,
@@ -207,12 +208,9 @@ function PlotsContent() {
             <p className="mx-auto mb-6 max-w-xl text-muted-foreground">
               Оставьте заявку — подберём помещение под ваши требования
             </p>
-            <Button asChild>
-              <Link href="/contacts#form">
-                Оставить заявку
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <ContactButton showArrow>
+              Оставить заявку
+            </ContactButton>
           </div>
         </section>
       </main>

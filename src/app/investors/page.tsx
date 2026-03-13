@@ -3,15 +3,16 @@ import Link from 'next/link'
 import { Header, Footer } from '@/components/layout'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { ContactButton } from '@/components/features'
 import {
   TrendingUp,
-  Shield,
   FileCheck,
   Zap,
   Building2,
   Landmark,
   ArrowRight,
   CheckCircle,
+  ShieldCheck,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ const investmentFormats = [
     icon: Landmark,
     title: 'Строительство BTS',
     description: 'Строительство объекта под требования заказчика (Build-to-Suit)',
-    features: ['По проекту заказчика', 'Земельный участок', 'Сопровождение строительства'],
+    features: ['По проекту заказчика', 'Земельный участок', 'Инженерная инфраструктура', 'Сопровождение строительства'],
     link: '/contacts#form',
     linkText: 'Оставить заявку',
   },
@@ -41,7 +42,7 @@ const investmentFormats = [
     icon: TrendingUp,
     title: 'Долгосрочная аренда',
     description: 'Аренда помещений на срок от 5 лет с фиксированными условиями',
-    features: ['Фиксация ставки', 'Право выкупа', 'Гибкие условия'],
+    features: ['Фиксация ставки', 'Гибкие условия'],
     link: '/plots?deal=rent',
     linkText: 'Смотреть каталог',
   },
@@ -54,19 +55,19 @@ const benefits = [
     description: 'Включены в федеральный реестр Минпромторга РФ — доступ к мерам господдержки',
   },
   {
-    icon: Shield,
-    title: 'Налоговые льготы',
-    description: 'Резиденты получают льготы по налогу на имущество и земельному налогу',
-  },
-  {
     icon: Zap,
     title: 'Готовая инфраструктура',
-    description: 'Электричество 31,5 МВт, газ, вода, канализация, оптоволокно — всё подключено',
+    description: 'Электричество 31,5 МВт, отопление, вода, канализация, оптоволокно',
   },
   {
     icon: TrendingUp,
     title: 'Рост стоимости',
     description: 'Средний рост стоимости недвижимости в парке — 8-12% в год',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Безопасность',
+    description: 'Охраняемая территория, видеонаблюдение, СКУД, контроль доступа 24/7',
   },
 ]
 
@@ -79,8 +80,6 @@ const stats = [
 
 const governmentSupport = [
   'Субсидирование процентной ставки по кредитам',
-  'Льготы по налогу на имущество организаций',
-  'Льготы по земельному налогу',
   'Субсидии на возмещение затрат на инфраструктуру',
   'Программы Фонда развития промышленности',
 ]
@@ -140,12 +139,18 @@ export default function InvestorsPage() {
                         </li>
                       ))}
                     </ul>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href={format.link}>
+                    {format.linkText === 'Оставить заявку' ? (
+                      <ContactButton variant="outline" size="sm" showArrow>
                         {format.linkText}
-                        <ArrowRight className="ml-1 h-4 w-4" />
-                      </Link>
-                    </Button>
+                      </ContactButton>
+                    ) : (
+                      <Button variant="outline" size="sm" asChild>
+                        <Link href={format.link}>
+                          {format.linkText}
+                          <ArrowRight className="ml-1 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    )}
                   </CardContent>
                 </Card>
               ))}
@@ -203,15 +208,12 @@ export default function InvestorsPage() {
             <p className="mx-auto mb-6 max-w-xl text-primary-foreground/80">
               Оставьте заявку — проведём экскурсию и подготовим индивидуальное предложение
             </p>
-            <Button
+            <ContactButton
               className="bg-accent text-accent-foreground hover:bg-accent/90"
-              asChild
+              showArrow
             >
-              <Link href="/contacts#form">
-                Оставить заявку
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+              Оставить заявку
+            </ContactButton>
           </div>
         </section>
       </main>

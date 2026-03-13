@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { PT_Sans } from 'next/font/google'
 import { OrganizationJsonLd } from '@/components/seo'
+import { ContactFormModalProvider } from '@/components/features'
 import './globals.css'
 
 const ptSans = PT_Sans({
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     template: '%s | Промпарк Красный Яр',
   },
   description:
-    'Современный индустриальный парк для размещения производственных и логистических объектов. Участки от 1500 м², готовая инфраструктура: электричество до 2 МВт, газ, ж/д ветка.',
+    'Современный индустриальный парк для размещения производственных и логистических объектов. Участки от 1500 м², готовая инфраструктура: электричество до 31,5 МВт, газ.',
   keywords: [
     'индустриальный парк',
     'промышленный парк',
@@ -99,8 +100,10 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${ptSans.variable} font-sans antialiased`}>
-        <OrganizationJsonLd />
-        {children}
+        <ContactFormModalProvider>
+          <OrganizationJsonLd />
+          {children}
+        </ContactFormModalProvider>
       </body>
     </html>
   )

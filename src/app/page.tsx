@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Header, Footer } from '@/components/layout'
-import { ContactForm, Genplan } from '@/components/features'
+import { ContactForm, Genplan, LocationMap } from '@/components/features'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -26,9 +26,8 @@ import {
 } from 'lucide-react'
 
 const stats = [
-  { label: 'Площадь помещений', value: '57 000 м²', icon: Ruler },
-  { label: 'Резидентов', value: '9', icon: Users },
-  { label: 'Лет работы', value: '14', icon: Clock },
+  { label: 'Площадь территории', value: '12,1 Га', icon: Ruler },
+  { label: 'Площадь помещений', value: '78 800 м²', icon: Building2 },
   { label: 'Мощность', value: '31,5 МВт', icon: Zap },
 ]
 
@@ -56,48 +55,21 @@ export default function Home() {
         <section className="relative bg-primary text-primary-foreground">
           <div className="container mx-auto px-4">
             {/* Main hero */}
-            <div className="relative flex min-h-[50vh] flex-col justify-between py-10 lg:min-h-[60vh] lg:py-12">
-              {/* Top left - subtitle */}
-              <div className="max-w-md">
-                <p className="text-xl text-primary-foreground/70 md:text-2xl">
-                  Производственная площадка
+            <div className="relative flex min-h-[25vh] items-start justify-between py-6 lg:min-h-[30vh] lg:py-8">
+              {/* Left - Промпарк Красный Яр */}
+              <div>
+                <h1 className="text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
+                  Промпарк
                   <br />
-                  с готовой инфраструктурой в Красноярске
+                  <span className="text-accent">Красный Яр</span>
+                </h1>
+              </div>
+
+              {/* Right - Территория вашего бизнеса */}
+              <div className="text-right">
+                <p className="whitespace-nowrap text-3xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl xl:text-7xl">
+                  Территория вашего бизнеса
                 </p>
-              </div>
-
-              {/* Bottom section */}
-              <div className="mt-12 flex flex-col items-start justify-between gap-8 lg:mt-0 lg:flex-row lg:items-end">
-                {/* Button - bottom left */}
-                <div>
-                  <Button size="lg" className="bg-accent px-8 py-6 text-lg text-accent-foreground hover:bg-accent/90" asChild>
-                    <Link href="/plots">
-                      Выбрать помещение
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </Button>
-                </div>
-
-                {/* Main title - bottom right */}
-                <div className="text-right">
-                  <h1 className="text-5xl font-bold leading-none tracking-tight md:text-7xl lg:text-8xl xl:text-9xl">
-                    Промпарк
-                    <br />
-                    <span className="text-accent">Красный Яр</span>
-                  </h1>
-                </div>
-              </div>
-            </div>
-
-            {/* Stats bar */}
-            <div className="border-t border-primary-foreground/10 py-10">
-              <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <div className="mb-1 text-3xl font-bold lg:text-4xl">{stat.value}</div>
-                    <div className="text-sm text-primary-foreground/60">{stat.label}</div>
-                  </div>
-                ))}
               </div>
             </div>
 
@@ -114,6 +86,20 @@ export default function Home() {
             priority
           />
         </div>
+
+        {/* Stats bar */}
+        <section className="bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4 py-5">
+            <div className="grid grid-cols-3 gap-8">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="mb-1 text-3xl font-bold lg:text-4xl">{stat.value}</div>
+                  <div className="text-sm text-primary-foreground/60">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Форматы помещений - вертикальные карточки */}
         <section className="py-10 lg:py-14">
@@ -135,9 +121,6 @@ export default function Home() {
                       </div>
                       <h3 className="text-xl font-bold">{format.title}</h3>
                     </div>
-
-                    {/* Description */}
-                    <p className="mb-6 text-muted-foreground">{format.description}</p>
 
                     {/* Features */}
                     <ul className="mb-6 flex-1 space-y-2">
@@ -164,58 +147,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Достижения и Преимущества */}
-        <section className="bg-muted py-10 lg:py-14">
-          <div className="container mx-auto px-4">
-            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-              {/* Достижения - слева */}
-              <div>
-                <h2 className="mb-6">Достижения</h2>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {achievements.map((item, index) => {
-                    const Icon = item.icon
-                    return (
-                      <div key={index} className="flex items-start gap-3 rounded-lg bg-background p-4">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                          <Icon className="h-5 w-5 text-accent" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold">{item.title}</h3>
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-
-              {/* Преимущества - справа */}
-              <div>
-                <h2 className="mb-6">Почему выбирают нас</h2>
-                <div className="space-y-4">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="flex gap-3">
-                      <CheckCircle className="h-5 w-5 shrink-0 text-accent" />
-                      <div>
-                        <h4 className="font-semibold">{benefit.title}</h4>
-                        <p className="text-sm text-muted-foreground">{benefit.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6">
-                  <Button variant="outline" asChild>
-                    <Link href="/infrastructure">
-                      Подробнее об инфраструктуре
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Генплан */}
         <Genplan />
 
@@ -227,14 +158,24 @@ export default function Home() {
             <div className="grid gap-6 md:grid-cols-3">
               {targetSegments.map((segment) => (
                 <div key={segment.id} className="rounded-xl border-2 bg-background p-6">
-                  <Badge variant="outline" className="mb-4">{segment.subtitle}</Badge>
                   <h3 className="mb-2 text-xl font-semibold">{segment.title}</h3>
-                  <p className="text-muted-foreground">{segment.description}</p>
+                  <Badge variant="outline" className="mb-4">{segment.subtitle}</Badge>
+                  <ul className="space-y-2">
+                    {segment.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-muted-foreground">
+                        <CheckCircle className="h-4 w-4 shrink-0 text-accent" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Где мы находимся */}
+        <LocationMap />
       </main>
 
       <Footer />

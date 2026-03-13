@@ -110,6 +110,8 @@ const documents = [
   { title: 'Сертификат соответствия ГОСТ Р 56301-2014', description: 'Подтверждение статуса промышленного парка' },
   { title: 'Свидетельство о включении в реестр Минпромторга', description: 'Федеральный реестр промышленных парков РФ' },
   { title: 'Договор аренды', description: 'Типовой договор аренды помещений' },
+  { title: 'Инвестиционный договор', description: 'Договор для инвесторов парка' },
+  { title: 'Нормативные документы резидентов', description: 'Регламенты и правила для резидентов' },
   { title: 'Правила внутреннего распорядка', description: 'Регламент работы на территории парка' },
 ]
 
@@ -122,7 +124,7 @@ export default function InfrastructurePage() {
         {/* Hero */}
         <section className="bg-primary py-12 text-primary-foreground lg:py-16">
           <div className="container mx-auto px-4">
-            <h1 className="mb-4">Инфраструктура</h1>
+            <h1 className="mb-4">Управляющая компания</h1>
             <p className="max-w-2xl text-lg text-primary-foreground/80">
               Полный комплекс инженерных коммуникаций и транспортной доступности для бесперебойной
               работы вашего производства.

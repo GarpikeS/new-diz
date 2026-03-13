@@ -9,12 +9,18 @@ const buildings = [
     tag: 'Введено в эксплуатацию',
     tagType: 'active',
     title: '1-я очередь',
-    description: 'Производственно-складские и офисные помещения',
-    specs: [
-      { label: 'Общая площадь', value: '57 000 м²' },
-      { label: 'Производство/склад', value: '50 000 м²' },
-      { label: 'Офисы', value: '7 000 м²' },
-      { label: 'Высота потолков', value: 'до 13 м' },
+    totalArea: '57 000 м²',
+    productionSpecs: [
+      { value: '50 000 м²', label: 'Площадь' },
+      { value: 'до 13 м', label: 'Высота' },
+      { value: '5 т/м²', label: 'Нагрузка на полы' },
+      { value: null, label: 'Электроснабжение опционально' },
+    ],
+    officeSpecs: [
+      { value: '7 000 м²', label: 'Площадь' },
+      { value: '3 м', label: 'Высота' },
+      { value: null, label: 'Чистовая отделка' },
+      { value: null, label: 'Видеонаблюдение' },
     ],
     primaryAction: { label: 'Арендовать', href: '/plots?deal=rent' },
     position: { top: '45%', left: '28%' },
@@ -24,12 +30,18 @@ const buildings = [
     tag: 'В реализации',
     tagType: 'progress',
     title: '2-я очередь',
-    description: 'Гибкие помещения Light Industrial',
-    specs: [
-      { label: 'Общая площадь', value: '21 800 м²' },
-      { label: 'Минимальный блок', value: 'от 480 м²' },
-      { label: 'Высота потолков', value: '6-8 м' },
-      { label: 'Электроснабжение', value: 'повышенное' },
+    totalArea: '21 800 м²',
+    productionSpecs: [
+      { value: 'от 480 м²', label: 'Площадь' },
+      { value: '8 м', label: 'Высота' },
+      { value: '3 т/м²', label: 'Нагрузка на пол' },
+      { value: 'от 150 кВт', label: 'Электроснабжение' },
+    ],
+    officeSpecs: [
+      { value: 'от 50 м²', label: 'Площадь' },
+      { value: null, label: 'Чистовая отделка' },
+      { value: null, label: 'Интернет' },
+      { value: null, label: 'Видеонаблюдение' },
     ],
     primaryAction: { label: 'Инвестировать', href: '/plots?deal=sale' },
     position: { top: '40%', left: '62%' },
@@ -89,8 +101,14 @@ export function Genplan() {
             {buildings.map((building) => (
               <div
                 key={building.id}
-                className="rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
+                className="relative rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
               >
+                {/* Total area badge - top right */}
+                <div className="absolute right-5 top-5 text-right">
+                  <div className="text-2xl font-bold text-white">{building.totalArea}</div>
+                  <div className="text-xs text-white/50">общая площадь</div>
+                </div>
+
                 {/* Header */}
                 <div className="mb-3 flex items-center gap-3">
                   <span
@@ -112,14 +130,46 @@ export function Genplan() {
                   </div>
                 </div>
 
-                {/* Specs - компактно */}
-                <div className="mb-4 grid grid-cols-2 gap-2 text-sm">
-                  {building.specs.map((spec, i) => (
-                    <div key={i} className="flex justify-between gap-2">
-                      <span className="text-white/50">{spec.label}</span>
-                      <span className="font-semibold text-white">{spec.value}</span>
+                {/* Specs - две колонки */}
+                <div className="mb-4 grid grid-cols-2 gap-4 text-sm">
+                  {/* Производственные */}
+                  <div>
+                    <div className="mb-2 font-semibold text-white">
+                      {building.id === 1 ? 'Производственно-складские' : 'Производственные'}
                     </div>
-                  ))}
+                    <ul className="space-y-1">
+                      {building.productionSpecs?.map((spec, i) => (
+                        <li key={i} className="flex justify-between gap-2">
+                          {spec.value ? (
+                            <>
+                              <span className="text-white/50">{spec.label}</span>
+                              <span className="font-semibold text-white text-right">{spec.value}</span>
+                            </>
+                          ) : (
+                            <span className="text-white/70">{spec.label}</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  {/* Офисные */}
+                  <div>
+                    <div className="mb-2 font-semibold text-white">Офисные</div>
+                    <ul className="space-y-1">
+                      {building.officeSpecs?.map((spec, i) => (
+                        <li key={i} className="flex justify-between gap-2">
+                          {spec.value ? (
+                            <>
+                              <span className="text-white/50">{spec.label}</span>
+                              <span className="font-semibold text-white text-right">{spec.value}</span>
+                            </>
+                          ) : (
+                            <span className="text-white/70">{spec.label}</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
                 {/* Action */}

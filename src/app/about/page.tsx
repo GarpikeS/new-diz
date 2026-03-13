@@ -1,8 +1,7 @@
 import { Metadata } from 'next'
 import { Header, Footer } from '@/components/layout'
 import { Card, CardContent } from '@/components/ui/card'
-import { CheckCircle, FileCheck, Award, TrendingUp, Calendar } from 'lucide-react'
-import { benefits } from '@/lib/data'
+import { FileCheck, Award, TrendingUp, Calendar, Building, MousePointerClick, Users, Wrench, Receipt, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'О парке',
@@ -26,13 +25,12 @@ const stats = [
 ]
 
 const advantages = [
-  'Готовая инфраструктура',
-  'Транспортная и инженерная доступность',
-  'Работаем в одно окно',
-  'Индивидуальный подход',
-  'Собственная служба эксплуатации',
-  'Прозрачное ценообразование',
-  '14 лет работы',
+  { icon: Building, title: 'Готовая инфраструктура' },
+  { icon: MousePointerClick, title: 'Работаем в одно окно' },
+  { icon: Users, title: 'Индивидуальный подход' },
+  { icon: Wrench, title: 'Собственная служба эксплуатации' },
+  { icon: Receipt, title: 'Прозрачное ценообразование' },
+  { icon: Clock, title: '14 лет работы' },
 ]
 
 const achievements = [
@@ -76,8 +74,51 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Timeline */}
+        {/* Преимущества */}
         <section className="py-8 lg:py-10">
+          <div className="container mx-auto px-4">
+            <h2 className="mb-6">Преимущества</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {advantages.map((item) => {
+                const Icon = item.icon
+                return (
+                  <div key={item.title} className="flex flex-col items-center rounded-xl border bg-background p-5 text-center shadow-sm">
+                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent">
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
+                    <span className="font-semibold">{item.title}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Достижения */}
+        <section className="py-8 lg:py-10">
+          <div className="container mx-auto px-4">
+            <h2 className="mb-6">Достижения</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {achievements.map((item, index) => {
+                const Icon = item.icon
+                return (
+                  <div key={index} className="flex items-start gap-3 rounded-lg bg-muted p-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10">
+                      <Icon className="h-5 w-5 text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Этапы развития */}
+        <section className="border-t py-8 lg:py-10">
           <div className="container mx-auto px-4">
             <h2 className="mb-8">Этапы развития</h2>
 
@@ -94,89 +135,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Преимущества */}
-        <section className="border-t bg-muted py-8 lg:py-10">
-          <div className="container mx-auto px-4">
-            <h2 className="mb-6">Преимущества</h2>
-            <ul className="grid gap-3 md:grid-cols-2">
-              {advantages.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* Достижения и Почему выбирают нас */}
-        <section className="border-t py-8 lg:py-10">
-          <div className="container mx-auto px-4">
-            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-              {/* Достижения */}
-              <div>
-                <h2 className="mb-6">Достижения</h2>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {achievements.map((item, index) => {
-                    const Icon = item.icon
-                    return (
-                      <div key={index} className="flex items-start gap-3 rounded-lg bg-muted p-4">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                          <Icon className="h-5 w-5 text-accent" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold">{item.title}</h3>
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-
-              {/* Почему выбирают нас */}
-              <div>
-                <h2 className="mb-6">Почему мы</h2>
-                <div className="space-y-4">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="flex gap-3">
-                      <CheckCircle className="h-5 w-5 shrink-0 text-accent" />
-                      <div>
-                        <h4 className="font-semibold">{benefit.title}</h4>
-                        <p className="text-sm text-muted-foreground">{benefit.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Руководство */}
-        <section className="border-t py-8 lg:py-10">
-          <div className="container mx-auto px-4">
-            <h2 className="mb-6">Руководство</h2>
-            <Card className="max-w-2xl">
-              <CardContent className="flex items-start gap-6 p-6">
-                <img
-                  src="/team/sivaev.jpg"
-                  alt="Сиваев Александр Владимирович"
-                  className="h-32 w-32 rounded-lg object-cover"
-                />
-                <div>
-                  <h3 className="mb-1 text-xl font-semibold">Сиваев Александр Владимирович</h3>
-                  <p className="mb-4 text-muted-foreground">Генеральный директор</p>
-                  <p className="text-sm text-muted-foreground">
-                    Руководит парком с момента основания в 2012 году. Под его руководством
-                    «Красный Яр» стал первым промышленным парком Красноярского края в
-                    федеральном реестре Минпромторга РФ.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
       </main>
 
       <Footer />

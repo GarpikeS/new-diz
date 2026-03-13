@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Menu, Phone, X } from 'lucide-react'
 import { company } from '@/lib/data'
+import { useContactFormModal } from '@/components/features'
 
 const navigation = [
   { name: 'О парке', href: '/about' },
@@ -17,6 +18,7 @@ const navigation = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const { openModal } = useContactFormModal()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -52,8 +54,8 @@ export function Header() {
             <Phone className="h-4 w-4 text-accent" />
             <span>{company.phone}</span>
           </a>
-          <Button className="bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-            <Link href="/contacts#form">Оставить заявку</Link>
+          <Button className="bg-accent text-accent-foreground hover:bg-accent/90" onClick={openModal}>
+            Оставить заявку
           </Button>
         </div>
 
@@ -93,10 +95,11 @@ export function Header() {
                 <Phone className="h-4 w-4 text-accent" />
                 <span>{company.phone}</span>
               </a>
-              <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90" asChild>
-                <Link href="/contacts#form" onClick={() => setIsOpen(false)}>
-                  Оставить заявку
-                </Link>
+              <Button
+                className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                onClick={() => { setIsOpen(false); openModal(); }}
+              >
+                Оставить заявку
               </Button>
             </div>
           </nav>

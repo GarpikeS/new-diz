@@ -14,36 +14,36 @@ const navigation = {
   ],
   legal: [
     { name: 'Политика конфиденциальности', href: '/privacy' },
-    { name: 'Карта сайта', href: '/sitemap.xml' },
   ],
 }
 
 export function Footer() {
   return (
-    <footer className="border-t bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12 lg:py-16">
-        <div className="grid gap-8 lg:grid-cols-4">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="mb-4 inline-block">
-              <img src="/logo.png" alt="Промпарк Красный Яр" className="h-12 w-auto brightness-0 invert" />
+    <footer className="bg-primary text-primary-foreground">
+      <div className="container mx-auto px-4 py-10 lg:py-12">
+        {/* Main content */}
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12">
+          {/* Logo + Tagline */}
+          <div className="lg:col-span-5">
+            <Link href="/" className="inline-block">
+              <img src="/logo.png" alt="Промпарк Красный Яр" className="h-10 w-auto" />
             </Link>
-            <p className="mt-4 text-sm text-primary-foreground/80">
+            <p className="mt-4 text-lg leading-relaxed text-primary-foreground/90 lg:text-xl">
               {company.tagline}
             </p>
           </div>
 
           {/* Navigation */}
-          <div className="lg:col-span-1">
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground/70">
-              Навигация
+          <div className="lg:col-span-3">
+            <h3 className="mb-4 font-semibold uppercase tracking-wider text-primary-foreground/60">
+              Разделы
             </h3>
             <ul className="space-y-2">
               {navigation.main.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+                    className="text-base text-primary-foreground/80 transition-colors hover:text-white"
                   >
                     {item.name}
                   </Link>
@@ -53,88 +53,56 @@ export function Footer() {
           </div>
 
           {/* Contacts */}
-          <div className="lg:col-span-1">
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground/70">
+          <div className="lg:col-span-4">
+            <h3 className="mb-4 font-semibold uppercase tracking-wider text-primary-foreground/60">
               Контакты
             </h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href={`tel:${company.phone.replace(/[^\d+]/g, '')}`}
-                  className="flex items-center gap-2 text-sm text-primary-foreground/80 transition-colors hover:text-primary-foreground"
-                >
-                  <Phone className="h-4 w-4 flex-shrink-0" />
-                  <span>{company.phone}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${company.mobile.replace(/[^\d+]/g, '')}`}
-                  className="flex items-center gap-2 text-sm text-primary-foreground/80 transition-colors hover:text-primary-foreground"
-                >
-                  <Phone className="h-4 w-4 flex-shrink-0" />
-                  <span>{company.mobile}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${company.email}`}
-                  className="flex items-center gap-2 text-sm text-primary-foreground/80 transition-colors hover:text-primary-foreground"
-                >
-                  <Mail className="h-4 w-4 flex-shrink-0" />
-                  <span>{company.email}</span>
-                </a>
-              </li>
-              <li>
-                <div className="flex items-start gap-2 text-sm text-primary-foreground/80">
-                  <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />
-                  <span>
-                    {company.address.city},
-                    <br />
-                    {company.address.street}
-                  </span>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          {/* Map */}
-          <div className="lg:col-span-1">
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground/70">
-              На карте
-            </h3>
-            <div className="overflow-hidden rounded-lg">
-              <iframe
-                src="https://yandex.ru/map-widget/v1/-/CPBKQNnN&z=8"
-                width="100%"
-                height="150"
-                style={{ border: 0 }}
-                title="Карта"
-              />
+            <div className="space-y-3">
+              <a
+                href={`tel:${company.phone.replace(/[^\d+]/g, '')}`}
+                className="flex items-center gap-3 text-lg text-primary-foreground/90 transition-colors hover:text-white"
+              >
+                <Phone className="h-5 w-5" />
+                {company.phone}
+              </a>
+              <a
+                href={`tel:${company.mobile.replace(/[^\d+]/g, '')}`}
+                className="flex items-center gap-3 text-base text-primary-foreground/90 transition-colors hover:text-white"
+              >
+                <Phone className="h-5 w-5" />
+                {company.mobile}
+              </a>
+              <a
+                href={`mailto:${company.email}`}
+                className="flex items-center gap-3 text-base text-primary-foreground/90 transition-colors hover:text-white"
+              >
+                <Mail className="h-5 w-5" />
+                {company.email}
+              </a>
+              <div className="flex items-start gap-3 text-base text-primary-foreground/80">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0" />
+                <span>{company.address.city}, {company.address.street}</span>
+              </div>
             </div>
-            <p className="mt-2 text-xs text-primary-foreground/60">
+            <p className="mt-4 text-sm text-primary-foreground/60">
               {company.workingHours}
             </p>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 border-t border-primary-foreground/10 pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-xs text-primary-foreground/60">
-              © {new Date().getFullYear()} {company.name}. Все права защищены.
-            </p>
-            <div className="flex gap-4">
-              {navigation.legal.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-xs text-primary-foreground/60 transition-colors hover:text-primary-foreground/80"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-primary-foreground/10 pt-6 text-sm text-primary-foreground/50 sm:flex-row">
+          <p>© {new Date().getFullYear()} {company.name}. Все права защищены.</p>
+          <div className="flex gap-6">
+            {navigation.legal.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="transition-colors hover:text-primary-foreground/80"
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
