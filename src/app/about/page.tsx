@@ -6,7 +6,7 @@ import { FileCheck, Award, TrendingUp, Calendar, Building, MousePointerClick, Us
 export const metadata: Metadata = {
   title: 'О парке',
   description:
-    'Промышленный парк Красный Яр — первый парк Красноярского края в федеральном реестре Минпромторга РФ.',
+    'Промышленный парк Красный Яр — первый парк Красноярского края в федеральном реестре Минпромторга РФ',
 }
 
 const milestones = [
@@ -26,18 +26,18 @@ const stats = [
 
 const advantages = [
   { icon: Building, title: 'Готовая инфраструктура' },
-  { icon: MousePointerClick, title: 'Работаем в одно окно' },
+  { icon: MousePointerClick, title: 'Сквозные решения' },
   { icon: Users, title: 'Индивидуальный подход' },
   { icon: Wrench, title: 'Собственная служба эксплуатации' },
-  { icon: Receipt, title: 'Прозрачное ценообразование' },
+  { icon: Receipt, title: 'Аренда/покупка помещений' },
   { icon: Clock, title: '14 лет работы' },
 ]
 
 const achievements = [
-  { icon: FileCheck, title: 'В реестре Минпромторга', description: 'Первый парк Красноярского края в федеральном реестре' },
-  { icon: Award, title: 'Сертификация ISO', description: 'Соответствие международным стандартам качества' },
-  { icon: TrendingUp, title: 'ТОП-30 России', description: 'В рейтинге лучших промышленных парков страны' },
   { icon: Calendar, title: 'С 2012 года', description: '14 лет успешной работы на рынке' },
+  { icon: TrendingUp, title: 'ТОП-30 России', description: 'В рейтинге лучших промышленных парков страны' },
+  { icon: Award, title: 'Сертификация ISO', description: 'Соответствие международным стандартам качества' },
+  { icon: FileCheck, title: 'В реестре Минпромторга', description: 'Первый парк Красноярского края в федеральном реестре' },
 ]
 
 export default function AboutPage() {
@@ -51,11 +51,9 @@ export default function AboutPage() {
           <div className="container mx-auto px-4">
             <h1 className="mb-6">О парке</h1>
             <p className="max-w-3xl text-lg text-primary-foreground/80">
-              Промышленный парк «Красный Яр» работает с{' '}
-              <span className="font-semibold text-primary-foreground">2012 года</span>. В{' '}
-              <span className="font-semibold text-primary-foreground">2022 году</span> стал первым парком
-              Красноярского края, включённым в федеральный реестр промышленных парков
-              Минпромторга РФ.
+              14 лет успешной работы<br />
+              100+ производственных компаний<br />
+              Качественные промышленные площади
             </p>
           </div>
         </section>

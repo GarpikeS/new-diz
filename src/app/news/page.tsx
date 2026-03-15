@@ -9,7 +9,7 @@ import { ArrowRight, Calendar } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Новости',
   description:
-    'Новости индустриального парка Красный Яр. Развитие инфраструктуры, новые резиденты, события.',
+    'Новости индустриального парка Красный Яр. Развитие инфраструктуры, новые резиденты, события',
 }
 
 function formatDate(dateString: string) {
@@ -33,14 +33,12 @@ export default function NewsPage() {
 
       <main>
         {/* Hero */}
-        <section className="bg-primary py-16 text-primary-foreground lg:py-24">
+        <section className="bg-primary py-12 text-primary-foreground lg:py-16">
           <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="mb-6">Новости</h1>
-              <p className="text-lg text-primary-foreground/80 md:text-xl">
-                Следите за развитием парка, узнавайте о новых резидентах и возможностях
-              </p>
-            </div>
+            <h1 className="mb-4">Новости</h1>
+            <p className="max-w-2xl text-lg text-primary-foreground/80">
+              Следите за развитием парка, узнавайте о новых резидентах и возможностях
+            </p>
           </div>
         </section>
 

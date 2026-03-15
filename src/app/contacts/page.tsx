@@ -8,7 +8,7 @@ import { company } from '@/lib/data'
 export const metadata: Metadata = {
   title: 'Контакты',
   description:
-    'Свяжитесь с нами для консультации по размещению вашего производства в промышленном парке Красный Яр.',
+    'Свяжитесь с нами для консультации по размещению вашего производства в промышленном парке Красный Яр',
 }
 
 const contacts = [
@@ -48,20 +48,18 @@ export default function ContactsPage() {
 
       <main>
         {/* Hero */}
-        <section className="bg-primary py-16 text-primary-foreground lg:py-24">
+        <section className="bg-primary py-12 text-primary-foreground lg:py-16">
           <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="mb-6">Контакты</h1>
-              <p className="text-lg text-primary-foreground/80 md:text-xl">
-                Свяжитесь с нами любым удобным способом. Мы ответим на все ваши вопросы и поможем
-                подобрать оптимальное решение.
-              </p>
-            </div>
+            <h1 className="mb-4">Контакты</h1>
+            <p className="max-w-2xl text-lg text-primary-foreground/80">
+              Свяжитесь с нами любым удобным способом. Мы ответим на все ваши вопросы и поможем
+              подобрать оптимальное решение
+            </p>
           </div>
         </section>
 
         {/* Contact Cards */}
-        <section className="border-b py-12">
+        <section className="border-b py-8">
           <div className="container mx-auto px-4">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {contacts.map((item) => (
@@ -88,7 +86,7 @@ export default function ContactsPage() {
         </section>
 
         {/* Form & Map */}
-        <section className="py-16 lg:py-24">
+        <section className="py-12 lg:py-16">
           <div className="container mx-auto px-4">
             <div className="grid gap-12 lg:grid-cols-2">
               {/* Form */}

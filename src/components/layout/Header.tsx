@@ -9,7 +9,7 @@ import { useContactFormModal } from '@/components/features'
 
 const navigation = [
   { name: 'О парке', href: '/about' },
-  { name: 'Площадки', href: '/plots' },
+  { name: 'Помещения', href: '/plots' },
   { name: 'Инвесторам', href: '/investors' },
   { name: 'Управляющая компания', href: '/infrastructure' },
   { name: 'Резиденты', href: '/residents' },

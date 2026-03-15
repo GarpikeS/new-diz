@@ -10,7 +10,7 @@ import { Briefcase, Clock, MapPin, Phone, Mail, Users, Building2, Zap } from 'lu
 export const metadata: Metadata = {
   title: 'Вакансии',
   description:
-    'Вакансии в промышленном парке Красный Яр. Работа в управляющей компании и у резидентов парка.',
+    'Вакансии в промышленном парке Красный Яр. Работа в управляющей компании и у резидентов парка',
 }
 
 const vacancies = [
@@ -79,7 +79,7 @@ export default function VacanciesPage() {
             </div>
             <p className="max-w-2xl text-lg text-primary-foreground/80">
               Присоединяйтесь к команде промышленного парка «Красный Яр».
-              Мы предлагаем стабильную работу и возможности для профессионального роста.
+              Мы предлагаем стабильную работу и возможности для профессионального роста
             </p>
           </div>
         </section>

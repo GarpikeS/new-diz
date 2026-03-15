@@ -16,7 +16,10 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://krasny-yar.ru'
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
   themeColor: '#2d2d2d',
+  colorScheme: 'light',
 }
 
 export const metadata: Metadata = {
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
     template: '%s | Промпарк Красный Яр',
   },
   description:
-    'Современный индустриальный парк для размещения производственных и логистических объектов. Участки от 1500 м², готовая инфраструктура: электричество до 31,5 МВт, газ.',
+    'Современный индустриальный парк для размещения производственных и логистических объектов. Участки от 1500 м², готовая инфраструктура: электричество до 31,5 МВт, газ',
   keywords: [
     'индустриальный парк',
     'промышленный парк',

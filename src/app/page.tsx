@@ -55,10 +55,10 @@ export default function Home() {
         <section className="relative bg-primary text-primary-foreground">
           <div className="container mx-auto px-4">
             {/* Main hero */}
-            <div className="relative flex min-h-[25vh] items-start justify-between py-6 lg:min-h-[30vh] lg:py-8">
+            <div className="relative flex min-h-[20vh] flex-col gap-4 py-6 sm:min-h-[25vh] sm:flex-row sm:items-start sm:justify-between lg:min-h-[30vh] lg:py-8">
               {/* Left - Промпарк Красный Яр */}
-              <div>
-                <h1 className="text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
+              <div className="shrink-0">
+                <h1 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
                   Промпарк
                   <br />
                   <span className="text-accent">Красный Яр</span>
@@ -66,8 +66,8 @@ export default function Home() {
               </div>
 
               {/* Right - Территория вашего бизнеса */}
-              <div className="text-right">
-                <p className="whitespace-nowrap text-3xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl xl:text-7xl">
+              <div className="sm:text-right">
+                <p className="text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl sm:leading-none md:text-5xl lg:text-6xl xl:text-7xl">
                   Территория вашего бизнеса
                 </p>
               </div>
