@@ -75,7 +75,8 @@ function PlotsContent() {
           <div className="container mx-auto px-4">
             <h1 className="mb-4">Каталог помещений</h1>
             <p className="max-w-2xl text-lg text-primary-foreground/80">
-              Офисы и производственные площади в промышленном парке Красный Яр. Аренда и покупка
+              Офисы и производственные площади в промышленном парке Красный Яр<br />
+              Аренда и покупка
             </p>
           </div>
         </section>
